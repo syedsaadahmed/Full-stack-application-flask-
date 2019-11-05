@@ -1,0 +1,90 @@
+  [{
+    "url": "https://www.indiatoday.in/fact-check/story/fake-diwali-video-1614237-2019-10-30",
+    "source": "google_factcheck_explorer",
+    "claim": "Video of Diwali fireworks in Mumbai",
+    "claim_url": "https://www.facebook.com/thiruavai.seithi.1/videos/vb.100035273200456/172082453977527/?type=2&theater",
+    "label": "fake",
+    "date": "2019-10-30T00:00:00",
+    "author": "India Today"
+  },
+    {
+    "url": "https://www.politifact.com/new-york/statements/2019/oct/29/brian-kolb/kolb-takes-aim-buffalo-billion-job-promises/",
+    "source": "google_factcheck_explorer",
+    "claim": "The Buffalo Billion is \"still breaking every job promise\"",
+    "claim_url": "https://twitter.com/GOPLdrBrianKolb/status/1176577065291780097?s=20",
+    "label": "mixed",
+    "date": null,
+    "author": "PolitiFact"
+  },
+    {
+    "url": "https://www.washingtonpost.com/politics/2019/10/22/fact-checking-trumps-wild-cabinet-session/",
+    "source": "google_factcheck_explorer",
+    "claim": "\u201cWe have a good relationship with the Kurds. But we never agreed to, you know, protect the Kurds.\"",
+    "claim_url": "https://www.whitehouse.gov/briefings-statements/remarks-president-trump-cabinet-meeting-15/",
+    "label": "fake",
+    "date": "2019-10-22T10:48:35",
+    "author": "Washington Post"
+  },
+    {
+    "url": "https://www.altnews.in/media-misreports-promotional-video-on-balakot-airstrikes-broadcast-as-real-footage/",
+    "source": "google_factcheck_explorer",
+    "claim": "Indian Air Force released real video of Balakot airstrike",
+    "claim_url": "https://twitter.com/republic/status/1180056364779032576?ref_src=twsrctfw, https://www.youtube.com/watch?time_continue=52&v=86gup1s_dYY, https://twitter.com/ZeeNewsHindi/status/1180022086900731904, https://twitter.com/ZeeMPCG/status/1180044879893688320, https://twitter.com/ZEEUPUK/status/1180049442386264064, https://www.youtube.com/watch?v=4QsLGPa7yXw, https://twitter.com/punjabkesari/status/1180032358893809669?ref_src=twsrctfw, https://twitter.com/firstpost/status/1180037481086910465, https://twitter.com/gujratsamachar/status/1180032768224292864, https://twitter.com/tv9gujarati/status/1180028076828192768, https://twitter.com/News18lokmat/status/1180026436410728448, http://archive.is/cIjZj, https://www.youtube.com/watch?v=KnTSvL5i5Ck&t=17s, https://twitter.com/ajaynewsman/status/1180008872632897536",
+    "label": "fake",
+    "date": "2019-10-04T00:00:00",
+    "author": "Alt News"
+  },
+  {
+    "url": "https://www.truthorfiction.com/did-ulysses-s-grant-say-a-second-civil-war-could-be-waged-over-intelligence-vs-superstition/",
+    "source": "google_factcheck_explorer",
+    "claim": "Former United States President Ulysses S. Grant said a second Civil War's dividing line 'will not be Mason\u2019s and Dixon\u2019s, but between patriotism and intelligence on one side, and superstition, ambition, and ignorance on the other.'",
+    "claim_url": "https://www.facebook.com/MalcolmNance/photos/a.155257705054509/490509401529336/?type=3&theater",
+    "label": "true",
+    "date": "2019-10-03T00:00:00",
+    "author": "Truth or Fiction?"
+  },
+    {
+    "url": "https://www.politifact.com/vermont/statements/2019/apr/24/bernie-sanders/sanders-set-firestorm-over-prisoners-voting-his-fa/",
+    "source": "google_factcheck_explorer",
+    "claim": "\"In my own state of Vermont, from the very first days of our state's history, what our Constitution says is that everybody can vote. That is true. So people in jail can vote.\"",
+    "claim_url": "https://www.facebook.com/watch/?v=445587812855163",
+    "label": "true",
+    "date": "2019-04-26T03:08:37",
+    "author": "PolitiFact"
+  },
+  {
+    "url": "https://factcheck.afp.com/photo-shows-climate-protesters-covered-fake-blood-demonstration-new-york",
+    "source": "google_factcheck_explorer",
+    "claim": "Protesters on Wall Street, New York City, are beaten by US police",
+    "claim_url": "https://perma.cc/72JG-9PYB",
+    "label": "fake",
+    "date": "2019-10-15T05:15:00",
+    "author": "AFP Fact Check"
+  },
+  {
+    "url": "https://teyit.org/videonun-baris-pinari-harekati-sirasinda-top-oynayan-cocuklari-koruyan-askeri-gosterdigi-iddiasi/",
+    "source": "google_factcheck_explorer",
+    "claim": "\u0130DD\u0130A: Video Bar\u0131\u015f P\u0131nar\u0131 Harekat\u0131 s\u0131ras\u0131nda top oynayan \u00e7ocuklar\u0131 koruyan askeri g\u00f6steriyor.",
+    "claim_url": "https://www.youtube.com/watch?v=7zF43HTm_EU",
+    "label": null,
+    "date": "2019-10-10T17:46:22",
+    "author": "Teyit.org"
+  },
+    {
+    "url": "https://factcheck.afp.com/video-shows-typhoon-mangkhut-lashing-hong-kong-2018",
+    "source": "google_factcheck_explorer",
+    "claim": "Video shows Typhoon Hagibis hitting Japanese island",
+    "claim_url": "https://www.facebook.com/watch/?v=721520714864215",
+    "label": "fake",
+    "date": "2019-10-18T08:55:00",
+    "author": "AFP Fact Check"
+  },
+  {
+    "url": "https://factly.in/new18-urdu-falsely-reports-that-a-muslim-man-was-lynched-by-hindus-at-a-mall-in-karnataka/",
+    "source": "google_factcheck_explorer",
+    "claim": "Muslim man Shakir beaten by some Sangh Pariwar men",
+    "claim_url": "https://www.youtube.com/watch?v=dsVvKJ9t7zI",
+    "label": "fake",
+    "date": "2019-10-01T00:00:00",
+    "author": "FACTLY"
+  }]

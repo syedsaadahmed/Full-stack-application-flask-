@@ -8,6 +8,10 @@
     <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css'>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
 </head>
 
 <body>
@@ -23,14 +27,11 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12">
-                        <ul class="demo2">
-                            <li class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li>
-                            <li class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li>
-                            <li class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li>
-                            <li class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li>
-                            <li class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li>
-                            <li class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li>
-                        </ul>
+                        <table class="table table-sm mastertable">
+                          <tbody>
+                            <tr class="loader"><td colspan="20" style="text-align: center;"><i class="fas fa-spin fa-2x fa-sync"></i></td></tr>
+                          </tbody>
+                        </table>
                         </div>
                     </div>
                 </div>
@@ -41,28 +42,23 @@
 
     <div class="col-md-offset-5">
         <div class="slider-width200 text-center">
-            <input type="range" id="start" name="volume" min="0" max="1" step="1">
-                <label for="volume">Volume</label>
+            <input type="range" id="beleivabilityindex" name="beleivabilityindex" min="0" max="1" step="1">
+                <label for="beleivabilityindex">Beleivability Index (BI)</label>
         </div>
         <div class="slider-width200 text-center">
-            <input type="range" id="cowbell" name="cowbell" min="0" max="1" step="1">
-                <label for="cowbell">Cowbell</label>
+            <input type="range" id="priorknowledge" name="priorknowledge" min="0" max="1" step="1">
+                <label for="priorknowledge">Prior Knowledge (PI)</label>
         </div>
     </div>
 
-
-        <div>
-            <button type="button" class="pull-right btn btn-primary btn-lg">
-                <span class="glyphicon glyphicon-cog"></span> Submit
-            </button>
-
-            <button type="button" class="pull-left btn btn-success btn-lg">
-                <span class="glyphicon glyphicon-refresh"></span> Refresh
-            </button>
-
+    <div>
+        <button type="button" class="pull-right btn btn-primary btn-lg" name="add" id="add">
+            <span class="glyphicon glyphicon-cog"></span> Submit
+        </button>
+        <button type="button" class="pull-left btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </button>
         </div>
-
-
 
 </div>
 
@@ -72,12 +68,64 @@
 
 
 
+
+
 <script type="text/javascript">
-    //handling of button and sending values to flask for submitting it to DB
+
+$(function(){
+    posturl = '/render'
+    $.ajax({
+        type: "GET",
+        url: posturl,
+        async: true,
+        dataType: 'json',
+        crossDomain: true,
+        success: function(data, status, xhr) {
+            $('tr.loader').remove();
+            tmpl = "<tr id='" + data[0].author + "'> \
+                <td> \
+                <tr><td> <b>URL</b> : " + data[0].url + "</td></tr> \
+                <tr><td> <b>Author</b> : " + data[0].author + "</td></tr> \
+                <tr><td> <b>Source</b> : " + data[0].source + "</td></tr> \
+                <tr><td> <b>Original Decision</b> : " + data[0].label + "</td></tr> \
+                <tr><td> <b>Date</b> : " + data[0].date + "</td></tr> \
+                </td> \
+                </tr>"
+            $("table.mastertable tbody").append(tmpl);
+        }
+  
+    });
+
+
+
+
+    // fetch all the params from the front-end and submit them in DB
+    $('#add').on('click',function (){
+        alert('Data Submitted !')
+        // var params = {
+        //     _ipaddress : $('#host_ip_address').val(),
+        //     _ipremove: '0'
+        // };
+        // var array = JSON.stringify(params);
+        // $.ajax({
+        //     data: array,
+        //     type: "POST",
+        //     headers: { "Content-Type": "application/json"},
+        //     url :"/ip-whitelist",
+        //     success: function(data) {
+        //         alert('IP Whitelisted');
+        //     },
+        //     error: function(err){
+        //         alert('error. something went wrong')
+        //     }
+        // });
+    });
+
+
+
+
+})
 </script>
-
-
-
 
 </body>
 </html>

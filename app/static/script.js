@@ -1,6 +1,6 @@
 $(function () {
         $(".demo2").bootstrapNews({
-            newsPerPage: 4,
+            newsPerPage: 1,
             autoplay: true,
 			pauseOnHover:true,
             direction: 'up',
