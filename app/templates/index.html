@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" >
-
 <head>
   <meta charset="UTF-8">
     <title>News Box </title>
@@ -10,69 +9,63 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-
 </head>
-
 <body>
 <!-- partial:index.partial.html -->
 <h1 style="margin-top:50px" align="center">Full Stack Application Development</h1>
 <br>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 offset-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>News</b></div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-12">
-                        <table class="table table-sm mastertable">
-                          <tbody>
-                            <tr class="loader"><td colspan="20" style="text-align: center;"><i class="fas fa-spin fa-2x fa-sync"></i></td></tr>
-                          </tbody>
-                        </table>
+<form method="POST">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 offset-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>News</b></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                            <table class="table table-sm mastertable">
+                              <tbody>
+                                <tr class="loader"><td colspan="20" style="text-align: center;"><i class="fas fa-spin fa-2x fa-sync"></i></td></tr>
+                              </tbody>
+                            </table>
+                            </div>
                         </div>
                     </div>
+                    <div class="panel-footer"> </div>
                 </div>
-                <div class="panel-footer"> </div>
             </div>
         </div>
+        <div class="col-md-offset-5">
+            <div class="slider-width200 text-center">
+                <input type="range" id="beleivabilityindex" name="beleivabilityindex" min="0" max="1" step="1">
+                    <label for="beleivabilityindex">Beleivability Index (BI)</label>
+            </div>
+            <div class="slider-width200 text-center">
+                <input type="range" id="priorknowledge" name="priorknowledge" min="0" max="1" step="1">
+                    <label for="priorknowledge">Prior Knowledge (PI)</label>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="pull-right btn btn-primary btn-lg" name="add" id="add">
+                <span class="glyphicon glyphicon-cog"></span> Submit
+            </button>
+            <button type="button" class="pull-left btn btn-success btn-lg">
+                <span class="glyphicon glyphicon-refresh"></span> Refresh
+            </button>
+        </div>
     </div>
-
-    <div class="col-md-offset-5">
-        <div class="slider-width200 text-center">
-            <input type="range" id="beleivabilityindex" name="beleivabilityindex" min="0" max="1" step="1">
-                <label for="beleivabilityindex">Beleivability Index (BI)</label>
-        </div>
-        <div class="slider-width200 text-center">
-            <input type="range" id="priorknowledge" name="priorknowledge" min="0" max="1" step="1">
-                <label for="priorknowledge">Prior Knowledge (PI)</label>
-        </div>
-    </div>
-
-    <div>
-        <button type="button" class="pull-right btn btn-primary btn-lg" name="add" id="add">
-            <span class="glyphicon glyphicon-cog"></span> Submit
-        </button>
-        <button type="button" class="pull-left btn btn-success btn-lg">
-            <span class="glyphicon glyphicon-refresh"></span> Refresh
-        </button>
-        </div>
-
-</div>
-
+</form>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://www.jqueryscript.net/demo/Responsive-jQuery-News-Ticker-Plugin-with-Bootstrap-3-Bootstrap-News-Box/scripts/jquery.bootstrap.newsbox.min.js'></script>
 <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 
-
-
-
-
 <script type="text/javascript">
-
 $(function(){
+    function getMetaContent(html, name) {
+      return html.filter(
+      (index, tag) => tag && tag.name && tag.name == name).attr('content');
+    }
     posturl = '/render'
     $.ajax({
         type: "GET",
@@ -80,52 +73,79 @@ $(function(){
         async: true,
         dataType: 'json',
         crossDomain: true,
-        success: function(data, status, xhr) {
+        success: function(data, status, xhr) {            
+            console.log(data[8].url)
+            console.log(data[8].claim_url)
             $('tr.loader').remove();
-            tmpl = "<tr id='" + data[0].author + "'> \
-                <td> \
-                <tr><td> <b>URL</b> : " + data[0].url + "</td></tr> \
-                <tr><td> <b>Author</b> : " + data[0].author + "</td></tr> \
-                <tr><td> <b>Source</b> : " + data[0].source + "</td></tr> \
-                <tr><td> <b>Original Decision</b> : " + data[0].label + "</td></tr> \
-                <tr><td> <b>Date</b> : " + data[0].date + "</td></tr> \
-                </td> \
-                </tr>"
+            tmpl = "<tr><td>Title: <div id=tit></td></tr>\
+            <tr><td>Story: <div id=kw></td></tr>\
+            <tr><td>Headlines: <div id=des></td></tr>\
+            <tr><td>Calims: <div id=claims>"+data[8].claim_url+"</div></td></tr>\
+            <tr><td>Images: <div id=img></td></tr>"
             $("table.mastertable tbody").append(tmpl);
+            $.ajax({
+                url: 'https://cors-anywhere.herokuapp.com/' + data[8].url
+            }).then(function(data) {
+                var html = $(data);
+                $('#kw').html(getMetaContent(html, 'description'||'twitter:description') || 'no keywords found');
+                $('#des').html(getMetaContent(html, 'keywords'||'twitter:keywords') || 'no description found');
+                var srcitem = (html.find('twitter:image'||'img').attr('src') || 'no image found');
+                var elem = document.createElement("img");
+                elem.setAttribute("src", srcitem);
+                elem.setAttribute("height", "100");
+                elem.setAttribute("width", "150");
+                document.getElementById("img").appendChild(elem);
+                $('#tit').html(getMetaContent(html, 'twitter:title') || 'no title information found');
+              });
         }
-  
     });
 
 
-
+    // # source_url (json file)
+    // # source_Name
+    // # prior_knowledge (user)
+    // # believability_index (given by the user)
+    // # headline
+    // # body
+    // # original_decision (json file)
+    // # published_date
 
     // fetch all the params from the front-end and submit them in DB
     $('#add').on('click',function (){
         alert('Data Submitted !')
-        // var params = {
-        //     _ipaddress : $('#host_ip_address').val(),
-        //     _ipremove: '0'
-        // };
-        // var array = JSON.stringify(params);
-        // $.ajax({
-        //     data: array,
-        //     type: "POST",
-        //     headers: { "Content-Type": "application/json"},
-        //     url :"/ip-whitelist",
-        //     success: function(data) {
-        //         alert('IP Whitelisted');
-        //     },
-        //     error: function(err){
-        //         alert('error. something went wrong')
-        //     }
-        // });
+
+        var body = document.getElementById("kw").innerHTML; 
+        var headline = document.getElementById("des").innerHTML;
+        
+        var params = {
+            _beleivabilityindex : $('#beleivabilityindex').val(),
+            _priorknowledge : $('#priorknowledge').val(),
+            //_source_url : $('#_priorknowledge').val(),
+            //_source_Name : $('#').val(),
+            _headline : headline,
+            _body : body
+            //_original_decision : $('#').val(),
+            //_published_date : $('#').val(),
+        };
+        var array = JSON.stringify(params);
+        console.log(array)
+        $.ajax({
+            data: array,
+            type: "POST",
+            headers: { "Content-Type": "application/json"},
+            url :"/submit",
+            success: function(data) {
+                alert('Data Submitted to Data-Base Successfully !');
+            },
+            error: function(err){
+                console.log(err.responseText)
+                alert('error. something went wrong')
+            }
+        });
     });
-
-
 
 
 })
 </script>
-
 </body>
 </html>
