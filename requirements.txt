@@ -2,7 +2,7 @@ Flask==1.0.2
 Flask-Cors==3.0.7
 html5lib==1.0.1
 newspaper3k==0.2.8
-nltk==3.4
+nltk==3.4.5
 pymongo==3.9.0
 pyodbc==4.0.25
 pyOpenSSL==18.0.0
