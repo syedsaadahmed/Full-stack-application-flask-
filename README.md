@@ -13,12 +13,14 @@ Python can be used to build server-side web applications. While a web framework 
 
 
 
-## Pre-requisites
+# Pre-requisites
 
 One must have Python installed in his local system for deploying this Full stack application easily. Other than Python one must also have to install Python-Flask and its dependencies as mentioned in the requirements.txt file.
 
+## Usage of Python Library "Newspaper3k" 
 
-## Running this Web Application
+
+# Running this Web Application
 
 using nohup (no hangup) 
 ```
@@ -38,7 +40,7 @@ gunicorn --workers 4 --access-logfile /var/tmp/gunicorn.logs --bind 0.0.0.0:5000
 **bind = Specify a server socket to bind.**
 
 
-## Checking the User Interface
+# Checking the User Interface
 
 https://localhost:5000/
 
