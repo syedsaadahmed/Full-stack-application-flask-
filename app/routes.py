@@ -4,7 +4,6 @@ import os
 import json
 from pymongo import MongoClient
 from bson import json_util
-
 #headers included for newspaper library
 import newspaper
 from newspaper import Article
@@ -84,4 +83,4 @@ def process():
 		}
 		return jsonify(processed_bits)
 	else:
-		return render_template('index.html')		
+		return render_template('index.html')
