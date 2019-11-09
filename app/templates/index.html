@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
-<!-- partial:index.partial.html -->
 <h1 style="margin-top:50px" align="center">Full Stack Application Development</h1>
 <br>
 <form method="POST">
@@ -34,6 +33,9 @@
                     </div>
                     <div class="panel-footer"> </div>
                 </div>
+                <button type="button" class="pull-right btn btn-default btn-sm" name="next" id="next" onclick="render_news()">
+                    <span class="glyphicon"></span> Next News
+                </button>                
             </div>
         </div>
         <div class="col-md-offset-5">
@@ -50,9 +52,9 @@
             <button type="button" class="pull-right btn btn-primary btn-lg" name="add" id="add">
                 <span class="glyphicon glyphicon-cog"></span> Submit
             </button>
-            <button type="button" class="pull-left btn btn-success btn-lg">
+            <button type="button" class="pull-left btn btn-success btn-lg" onClick="window.location.href=window.location.href">
                 <span class="glyphicon glyphicon-refresh"></span> Refresh
-            </button>
+            </button>            
         </div>
     </div>
 </form>
@@ -61,71 +63,104 @@
 <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 
 <script type="text/javascript">
-$(function(){
+
     function getMetaContent(html, name) {
       return html.filter(
       (index, tag) => tag && tag.name && tag.name == name).attr('content');
     }
-    posturl = '/render'
-    $.ajax({
-        type: "GET",
-        url: posturl,
-        async: true,
-        dataType: 'json',
-        crossDomain: true,
-        success: function(data, status, xhr) {            
-            console.log(data[8].url)
-            console.log(data[8].claim_url)
-            $('tr.loader').remove();
-            tmpl = "<tr><td>Title: <div id=tit></td></tr>\
-            <tr><td>Story: <div id=kw></td></tr>\
-            <tr><td>Headlines: <div id=des></td></tr>\
-            <tr><td>Calims: <div id=claims>"+data[8].claim_url+"</div></td></tr>\
-            <tr><td>Images: <div id=img></td></tr>"
-            $("table.mastertable tbody").append(tmpl);
-            $.ajax({
-                url: 'https://cors-anywhere.herokuapp.com/' + data[8].url
-            }).then(function(data) {
-                var html = $(data);
-                $('#kw').html(getMetaContent(html, 'description'||'twitter:description') || 'no keywords found');
-                $('#des').html(getMetaContent(html, 'keywords'||'twitter:keywords') || 'no description found');
-                var srcitem = (html.find('twitter:image'||'img').attr('src') || 'no image found');
-                var elem = document.createElement("img");
-                elem.setAttribute("src", srcitem);
-                elem.setAttribute("height", "100");
-                elem.setAttribute("width", "150");
-                document.getElementById("img").appendChild(elem);
-                $('#tit').html(getMetaContent(html, 'twitter:title') || 'no title information found');
-              });
-        }
-    });
+
+    var i=0;
+    function render_news() {
+        $("tbody").children().remove()
+        console.log(i)
+        posturl = '/render'
+        $.ajax({
+            type: "GET",
+            url: posturl,
+            async: true,
+            dataType: 'json',
+            crossDomain: true,
+            success: function(data, status, xhr) {            
+                $('tr.loader').remove();
+                tmpl = "<tr><td>Title: <div id=tit></td></tr>\
+                <tr><td>Story: <div id=kw></td></tr>\
+                <tr><td>Headlines: <div id=des></td></tr>\
+                <tr><td>News URL: <div id=newsurl>"+data[i].url+"</div></td></tr>\
+                <tr><td>News Claim: <div id=newslabel>"+data[i].label+"</div></td></tr>\
+                <tr><td>News Published Date: <div id=newsdate>"+data[i].date+"</div></td></tr>\
+                <tr><td>Calims: <div id=claims>"+data[i].claim_url+"</div></td></tr>\
+                <tr><td>Images: <div id=img></td></tr>"                
+                $("table.mastertable tbody").append(tmpl);
+                $.ajax({
+                    url: 'https://cors-anywhere.herokuapp.com/' + data[i].url
+                }).then(function(data) {
+                    var html = $(data);
+                    $('#kw').html(getMetaContent(html, 'description'||'twitter:description') || 'no keywords found');
+                    $('#des').html(getMetaContent(html, 'keywords'||'twitter:keywords') || 'no description found');
+                    var srcitem = (html.find('twitter:image'||'img').attr('src') || 'no image found');
+                    var elem = document.createElement("img");
+                    elem.setAttribute("src", srcitem);
+                    elem.setAttribute("height", "100");
+                    elem.setAttribute("width", "150");
+                    document.getElementById("img").appendChild(elem);
+                    $('#tit').html(getMetaContent(html, 'twitter:title') || 'no title information found');
+                    i=i+1;
+                  });
+            }
+        });
+    }
 
 
-    // # source_url (json file)
-    // # source_Name
-    // # prior_knowledge (user)
-    // # believability_index (given by the user)
-    // # headline
-    // # body
-    // # original_decision (json file)
-    // # published_date
+    // posturl = '/render'
+    // $.ajax({
+    //     type: "GET",
+    //     url: posturl,
+    //     async: true,
+    //     dataType: 'json',
+    //     crossDomain: true,
+    //     success: function(data, status, xhr) {            
+    //         console.log(data[8].url)
+    //         console.log(data[8].claim_url)
+    //         $('tr.loader').remove();
+    //         tmpl = "<tr><td>Title: <div id=tit></td></tr>\
+    //         <tr><td>Story: <div id=kw></td></tr>\
+    //         <tr><td>Headlines: <div id=des></td></tr>\
+    //         <tr><td>Calims: <div id=claims>"+data[8].claim_url+"</div></td></tr>\
+    //         <tr><td>Images: <div id=img></td></tr>"
+    //         $("table.mastertable tbody").append(tmpl);
+    //         $.ajax({
+    //             url: 'https://cors-anywhere.herokuapp.com/' + data[8].url
+    //         }).then(function(data) {
+    //             var html = $(data);
+    //             $('#kw').html(getMetaContent(html, 'description'||'twitter:description') || 'no keywords found');
+    //             $('#des').html(getMetaContent(html, 'keywords'||'twitter:keywords') || 'no description found');
+    //             var srcitem = (html.find('twitter:image'||'img').attr('src') || 'no image found');
+    //             var elem = document.createElement("img");
+    //             elem.setAttribute("src", srcitem);
+    //             elem.setAttribute("height", "100");
+    //             elem.setAttribute("width", "150");
+    //             document.getElementById("img").appendChild(elem);
+    //             $('#tit').html(getMetaContent(html, 'twitter:title') || 'no title information found');
+    //           });
+    //     }
+    // });
+
 
     // fetch all the params from the front-end and submit them in DB
     $('#add').on('click',function (){
-        alert('Data Submitted !')
-
         var body = document.getElementById("kw").innerHTML; 
         var headline = document.getElementById("des").innerHTML;
-        
+        var newsurl = document.getElementById("newsurl").innerHTML;
+        var newslabel = document.getElementById("newslabel").innerHTML;
+        var newsdate = document.getElementById("newsdate").innerHTML;
         var params = {
             _beleivabilityindex : $('#beleivabilityindex').val(),
             _priorknowledge : $('#priorknowledge').val(),
-            //_source_url : $('#_priorknowledge').val(),
-            //_source_Name : $('#').val(),
             _headline : headline,
-            _body : body
-            //_original_decision : $('#').val(),
-            //_published_date : $('#').val(),
+            _body : body,
+            _newsurl: newsurl,
+            _newslabel:newslabel,
+            _newsdate:newsdate
         };
         var array = JSON.stringify(params);
         console.log(array)
@@ -143,9 +178,7 @@ $(function(){
             }
         });
     });
-
-
-})
 </script>
 </body>
 </html>
+
