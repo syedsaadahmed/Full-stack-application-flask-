@@ -72,7 +72,6 @@ def render():
 def process():
 	if request.method == 'POST':
 		data = request.get_json();
-		print(data['_newsurl'])
 		#usage of newspaper3k here to extract information from the URLs
 		toi_article = Article(data['_newsurl'], language="en")
 		toi_article.download()

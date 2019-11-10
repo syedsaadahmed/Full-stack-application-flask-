@@ -123,9 +123,6 @@
             crossDomain: true,
             success: function(data, status, xhr) {            
                 $('tr.loader').remove();
-                // if data[i].url = "";{
-                //     return false;
-                // }
                 var params = {
                     _newsurl: data[i].url
                 };
