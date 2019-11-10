@@ -12,19 +12,23 @@ nltk.download('punkt')
 
 
 #connection to our Database MongoDB hosted on mLab
+
+# *** Here you can use your own uri, by vreating account on mlab, or you can also setup
+#	  mongodb on your local system/server and pass the uri for the instance here
+
 uri = 'mongodb://saadahmed20940:syed2saad@ds241968.mlab.com:41968/fullstack?retryWrites=false'
 client = MongoClient(uri,connectTimeoutMS=30000,socketTimeoutMS=None,socketKeepAlive=True)
 db = client.get_default_database()
 
 
-#home page / Main Page
+# Route for home page / Main landing Page
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
 def index():
     return render_template('index.html')
 
 
-#for displaying all the data in DB to a HTML page, interface to DB.
+#Route for displaying all the data in DB to a HTML page, interface to DB.
 @app.route('/display', methods=['GET'])
 def get_all_data():
 	try:
@@ -34,7 +38,7 @@ def get_all_data():
 		return json.dumps({'error' : str(e)})
 
 
-#for submitting the fields to DB
+#Route for submitting the fields to DB
 @app.route('/submit', methods=['GET', 'POST'])
 def hello():
 	#got the data from HTML web form
@@ -55,7 +59,7 @@ def hello():
 		return render_template('index.html')
 
 
-#rendering the data from JSON file for display
+#Route for rendering the data from JSON file for display
 @app.route('/render')
 def render():
     filename = os.path.join(app.static_folder, 'sample.json')
@@ -63,7 +67,7 @@ def render():
         return json.dumps(json.loads(blog_file.read()))
 
 
-#rendering the data from JSON file for display
+#Route for processing the URLs from JSON file
 @app.route('/processing', methods=['GET', 'POST'])
 def process():
 	if request.method == 'POST':
