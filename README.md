@@ -9,6 +9,8 @@ Python-Flask is a micro web framework written in Python which is used to develop
 
 # Pre-requisites
 
+## Python Flask with gunicorn
+
 One must have Python installed in his local system for deploying this Full stack application easily. Other than Python one must also have to install Python-Flask and its dependencies as mentioned in the requirements.txt file.
 
 ## Usage of Python Library "Newspaper3k"
