@@ -3,22 +3,19 @@
 
 ## A Brief Introduction
 
-A full stack application using python flask and and a suitable database with it. (MongoDB/SQL)
-
-Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. ... However, Flask supports extensions that can add application features as if they were implemented in Flask itself.
-
-Flask is a micro web application framework. ... Flask does however include a web server that can be used for testing and development. But when you're ready to host your app or put it into production, you should choose a different web server to use with it.
-
-Python can be used to build server-side web applications. While a web framework is not required to build web apps, it's rare that developers would not use existing open source libraries to speed up their progress in getting their application working. Python is not used in a web browser.
-
+A full stack application using python flask and and a suitable database with it. (MongoDB/SQL).
+Python-Flask is a micro web framework written in Python which is used to develop small and large scale web applications. It is easy to use and its also scalable.
 
 
 # Pre-requisites
 
 One must have Python installed in his local system for deploying this Full stack application easily. Other than Python one must also have to install Python-Flask and its dependencies as mentioned in the requirements.txt file.
 
-## Usage of Python Library "Newspaper3k" 
+## Usage of Python Library "Newspaper3k"
 
+For scraping the news, we have used the python-library "Newspaper3k", which scrapes news web URLs to fetch and retrieve different kind of information using different techniques.
+
+View a working online demo here: http://newspaper-demo.herokuapp.com
 
 # Running this Web Application
 
@@ -64,7 +61,7 @@ In short vast variety of fruitful solutions are there, it depends on scenario an
 
 ## Scalibility
 
-A three tier architecture for scaling REST API to a huge infrastructure must be useful, One must kept database and webserver at two different nodes, and in between them there should be a load balancer that will handle the bulk amount of requests coming to the API. In this all the requests must be successfully handled and your web service can be easily scaled to a bigger infra.
+A three tier architecture for scaling web application to a huge infrastructure must be useful, One must kept database and webserver at two different nodes, and in between them there should be a load balancer that will handle the bulk amount of requests coming to the API. In this manner all the requests must be successfully handled and your web application can be easily scalable to a bigger infrastructure.
 
 ## Documentation
 
