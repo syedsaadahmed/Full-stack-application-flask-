@@ -44,11 +44,11 @@ gunicorn --workers 4 --access-logfile /var/tmp/gunicorn.logs --bind 0.0.0.0:5000
 https://localhost:5000/
 
 
-# ARCHITECTURE OF THE APPLICATION
+# Architecture Of The Application
 
 Architecture diagram can be seen in the image present in the repository named as "Arch.jpg"
 
-# FEW ASPECTS RELATED TO USING PYTHON-FLASK
+# Few Aspects Related To Using Python-Flask
 
 ## Testing
 
