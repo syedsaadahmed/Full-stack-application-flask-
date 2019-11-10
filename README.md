@@ -44,10 +44,6 @@ gunicorn --workers 4 --access-logfile /var/tmp/gunicorn.logs --bind 0.0.0.0:5000
 https://localhost:5000/
 
 
-# Architecture Of The Application
-
-Architecture diagram can be seen in the image present in the repository named as "Arch.jpg"
-
 # Few Aspects Related To Using Python-Flask
 
 ## Testing
@@ -57,12 +53,12 @@ Something that is not tested can be a headache. Python Flask actually provides a
 
 ## Security
 
-For security of our RESTFUL API, we can use mulitple options, which are provide by Python-flask like Flask-JWT tokens, Flask OAuth2 libraries, Moreover one can have route authentication and authorization implemented in his web service.
-In short vast variety of fruitful solutions are there, it depends on scenario and infrastructure that how one must chose to secure the endpoints and routes present in web service.
+For security of our RESTFUL API, we can use mulitple options, which are provide by Python-flask like **Flask-JWT tokens, Flask OAuth2** libraries, Moreover one can have route authentication and authorization implemented in his web service.
+In short vast variety of fruitful solutions are there, it depends on scenario and infrastructure that how one must chose to secure the endpoints and routes present in web service. Furthermore Python-Flask also has libraries for **session management** and **role based authentication** mechanisms.
 
 ## Scalibility
 
-A three tier architecture for scaling web application to a huge infrastructure must be useful, One must kept database and webserver at two different nodes, and in between them there should be a load balancer that will handle the bulk amount of requests coming to the API. In this manner all the requests must be successfully handled and your web application can be easily scalable to a bigger infrastructure.
+A three tier architecture for scaling web application to a huge infrastructure must be useful, One must kept database and webserver at two different nodes, and in between them there should be a load balancer that will handle the bulk amount of requests coming to the API or Web application. In this manner all the requests must be successfully handled and your web application can be easily scalable to a bigger infrastructure. Moreover it is easy to contanerized python-flask application and it can be easily moved to any clustered environment based on Docker-Swarm or Kubernetes.
 
 ## Documentation
 
