@@ -141,6 +141,7 @@
                             <tr><td>News URL: <div id=newsurl>"+data[i].url+"</div></td></tr>\
                             <tr><td>News Published Date: <div id=newsdate>"+data[i].date+"</div></td></tr>\
                             <tr><td>Calims: <div id=claims>"+data[i].claim_url+"</div></td></tr>\
+                            <tr><td>News Label: <div id=newslabel>"+data[i].label+"</div></td></tr>\
                             <tr><td>Images:  <img src="+datafinal.news_top_image+" width=300 height=300></td></tr>\
                             <tr><td>Videos:  <embed src="+datafinal.news_movies+" width=300 height=300></video></td></tr>"
                         $("table.mastertable tbody").append(tmpl);
@@ -171,6 +172,7 @@
         var newsdate = document.getElementById("newsdate").innerHTML;
         var keywords = document.getElementById("keywords").innerHTML;
         var Headlines_2 = document.getElementById("des_2").innerHTML;
+        var newslabel = document.getElementById("newslabel").innerHTML;
 
         var params = {
             _beleivabilityindex : $('#beleivabilityindex').val(),
@@ -178,6 +180,7 @@
             _headline : [{Headlines_1,Headlines_2}],
             _body : body,
             _newsurl: newsurl,
+            _newslabel: newslabel,
             _newsdate:newsdate
         };
         var array = JSON.stringify(params);

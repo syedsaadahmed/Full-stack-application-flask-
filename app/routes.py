@@ -51,6 +51,7 @@ def hello():
 			"headline":data['_headline'],
 			"body":data['_body'],
 			"newsurl":data['_newsurl'],
+			"newslabel":data['_newslabel'],
 			"newsdate":data['_newsdate']
 		}]
 		db.test.insert_many(data_insertion)
