@@ -21,7 +21,7 @@ View a working online demo here: http://newspaper-demo.herokuapp.com
 
 # Running this Web Application
 
-using nohup (no hangup) 
+**using nohup (no hangup)**
 ```
 nohup flask run &
 ```
